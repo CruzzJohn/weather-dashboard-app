@@ -1,6 +1,10 @@
-# Weather Dashboard & Authentication
+# 🌦 Weather Dashboard & Authentication App
 
-A fullstack weather application with user authentication, weather search, 5-day forecast, and favorite city management.
+![React](https://img.shields.io/badge/React-18-blue)
+![Node](https://img.shields.io/badge/Node.js-Backend-green)
+![Express](https://img.shields.io/badge/Express-API-black)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-brightgreen)
+![JWT](https://img.shields.io/badge/Auth-JWT-orange)
 
 ## Features
 
@@ -11,6 +15,10 @@ A fullstack weather application with user authentication, weather search, 5-day 
 - Save and manage favorite cities
 - Responsive frontend design
 - Backend caching for current weather results
+  
+## 👨‍💻 About This Project
+
+This project demonstrates a full-stack weather application with authentication, API integration, and CRUD operations. It showcases real-world engineering practices including state management, secure authentication, and production-ready deployment structure.
 
 ## Setup
 
@@ -40,7 +48,20 @@ A fullstack weather application with user authentication, weather search, 5-day 
    ```bash
    npm start
    ```
+## 🧠 Architecture
 
+Frontend (React + Zustand)
+        ↓
+Backend (Express API)
+        ↓
+JWT Authentication Middleware
+        ↓
+MongoDB Database
+        ↓
+Weather API Integration
+
+ 
+  
 ## Environment Variables
 
 ### Backend `.env`
