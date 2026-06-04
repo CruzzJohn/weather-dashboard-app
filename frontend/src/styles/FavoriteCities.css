@@ -1,0 +1,90 @@
+.favorites-container {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+  margin-top: 24px;
+}
+
+.favorites-container h2 {
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+
+.login-prompt,
+.no-favorites {
+  font-size: 16px;
+  color: #4b5563;
+  margin: 0;
+}
+
+.favorites-list {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.favorite-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.favorite-info h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.favorite-info p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.favorite-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.view-button,
+.delete-button {
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 13px;
+  min-width: 70px;
+}
+
+.view-button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.view-button:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.delete-button {
+  background: rgba(248, 113, 113, 0.25);
+  color: white;
+}
+
+.delete-button:hover {
+  background: rgba(248, 113, 113, 0.45);
+}
+
+@media (max-width: 768px) {
+  .favorite-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .favorite-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
