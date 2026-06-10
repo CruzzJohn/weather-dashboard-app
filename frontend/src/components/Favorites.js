@@ -19,14 +19,17 @@ const Favorites = () => {
     if (token) loadFavorites();
   }, [token]);
 
-  const handleDelete = async (city) => {
-    try {
-      await deleteFavorite(city, token);
-      setFavorites((prev) => prev.filter((f) => f.city !== city));
-    } catch (err) {
-      console.error("Delete failed:", err);
-    }
-  };
+ const handleDelete = async (city) => {
+  try {
+    await deleteFavorite(city, token);
+
+    // Reload favorites from database
+    await loadFavorites();
+
+  } catch (err) {
+    console.error("Delete failed:", err);
+  }
+};
 
   return (
     <div style={{ marginTop: "20px" }}>

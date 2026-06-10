@@ -31,6 +31,8 @@ const useWeatherStore = create((set) => ({
   },
 
   addFavorite: async (name, country, lat, lon, token) => {
+    console.log("ADDING CITY:", name);
+    
   try {
     return await axios.post(
       "http://localhost:5000/api/favorites",

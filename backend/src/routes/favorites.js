@@ -7,43 +7,57 @@ const router = express.Router();
 router.post("/", authMiddleware, async (req, res) => {
   try {
     const { city, country, latitude, longitude } = req.body;
-    if (!city || typeof city !== 'string' || !city.trim()) {
-      return res.status(400).json({ message: 'City name is required to add a favorite.' });
-    }
 
-    const user = await User.findById(req.userId);
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-
-    if (user.favoriteCities.length >= 3) {
-       return res.status(400).json({
-         message: "You can only save up to 3 favorite cities."
-  });
-}
-
-     user.favoriteCities.push({ city, country, latitude, longitude });
-        await user.save();
-        
-    const existing = user.favoriteCities.some((fav) => fav.city.toLowerCase() === city.toLowerCase());
-    if (existing) {
-      return res.status(400).json({ message: 'City already in favorites.' });
-    }
-
-    // Limit favorites to 3 cities
-    if (user.favoriteCities.length >= 3) {
+    if (!city || typeof city !== "string" || !city.trim()) {
       return res.status(400).json({
-        message: 'You can only save up to 3 favorite cities.'
+        message: "City name is required."
       });
     }
 
-    user.favoriteCities.push({ city, country, latitude, longitude });
+    const user = await User.findById(req.userId);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found"
+      });
+    }
+
+    const existing = user.favoriteCities.some(
+      (fav) => fav.city.toLowerCase() === city.toLowerCase()
+    );
+
+    if (existing) {
+      return res.status(400).json({
+        message: "City already in favorites."
+      });
+    }
+
+    if (user.favoriteCities.length >= 3) {
+      return res.status(400).json({
+        message: "You can only save up to 3 favorite cities."
+      });
+    }
+
+    user.favoriteCities.push({
+      city,
+      country,
+      latitude,
+      longitude
+    });
+
     await user.save();
 
-    res.status(201).json({ message: 'Favorite added', favoriteCities: user.favoriteCities });
+    res.status(201).json({
+      message: "Favorite added",
+      favoriteCities: user.favoriteCities
+    });
+
   } catch (err) {
-    console.error('Favorites add error:', err);
-    res.status(500).json({ message: 'Unexpected server error. Please try again later.' });
+    console.error("Favorites add error:", err);
+
+    res.status(500).json({
+      message: "Server error"
+    });
   }
 });
 

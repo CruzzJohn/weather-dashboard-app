@@ -43,15 +43,18 @@ const handleAddFavorite = async () => {
   }
 
   try {
-    await addFavorite(
-      currentWeather.name,
-      currentWeather.sys.country,
-      currentWeather.coord.lat,
-      currentWeather.coord.lon,
-      token
-    );
+   await addFavorite(
+  currentWeather.name,
+  currentWeather.sys.country,
+  currentWeather.coord.lat,
+  currentWeather.coord.lon,
+  token
+);
 
-    setMessage(`${currentWeather.name} was added to favorites.`);
+setMessage(`${currentWeather.name} was added to favorites.`);
+
+// Refresh page so favorites reload
+window.location.reload();
   } catch (err) {
     setMessage(err.response?.data?.message || "Unable to add favorite.");
   }
